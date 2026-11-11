@@ -1,6 +1,6 @@
 # Yoga 7i Pro Linux Brightness Fix
 
-Brightness slider and keys do nothing on a Lenovo Yoga 7i Pro (Intel `xe` + NVIDIA) running Linux. This fixes it with one kernel parameter.
+Brightness slider and keys do nothing on a Lenovo Yoga Pro 7 15IPH11 / Yoga 7i Pro (`83SN`, Intel `xe` + NVIDIA) running Linux. This fixes it with one kernel parameter.
 
 ## Fix it (2 minutes)
 
@@ -73,6 +73,17 @@ On GRUB: add it to `GRUB_CMDLINE_LINUX_DEFAULT` in `/etc/default/grub`, run `sud
 
 ## Tested on
 
-- Lenovo Yoga 7i Pro: Intel Panther Lake (`xe`) + NVIDIA RTX 5050 Max-Q
-- CachyOS, kernel `6.18.35-1-cachyos-lts`, limine
-- niri (Wayland) + noctalia-shell, which runs `brightnessctl -d intel_backlight`
+| Part | Spec |
+|------|------|
+| Laptop | Lenovo Yoga Pro 7 15IPH11 (Yoga 7i Pro), machine type `83SN` |
+| BIOS | `TNCN37WW` |
+| CPU | Intel Core Ultra 7 356H (Panther Lake, 16 threads) |
+| iGPU | Intel Panther Lake Graphics (`xe` driver), drives the screen |
+| dGPU | NVIDIA GeForce RTX 5050 Max-Q / Mobile (GB207M) |
+| RAM | 32 GB |
+| Screen | 15" 2560x1600 16:10, 48-165 Hz, EDO `EF25QBA63.B` |
+| OS | CachyOS, limine bootloader |
+| Kernels | `6.18.35-1-cachyos-lts`, `7.3.0-4-cachyos` |
+| Desktop | niri (Wayland) + noctalia-shell (`brightnessctl -d intel_backlight`) |
+
+With the fix active, `max_brightness` reads `512`.
